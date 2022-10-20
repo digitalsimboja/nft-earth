@@ -44,7 +44,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Eth NFTMarketplace",
+  appName: "Earth NFT",
   chains,
 });
 
