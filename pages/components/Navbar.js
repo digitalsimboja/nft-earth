@@ -7,12 +7,13 @@ import {
     Link,
     useColorModeValue,
     useBreakpointValue,
+    Divider,
   } from "@chakra-ui/react";
   import { ConnectButton, wallet } from "@rainbow-me/rainbowkit";
   
   export default function Navbar() {
     return (
-      <Box>
+      <Box bg={useColorModeValue("gray.800", "gray: 800")}>
         <Flex
           color={"white"}
           minH={"60px"}
@@ -55,5 +56,6 @@ import {
           </Stack>
         </Flex>
       </Box>
+      
     );
   }

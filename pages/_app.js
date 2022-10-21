@@ -60,7 +60,6 @@ function MyApp({ Component, pageProps }) {
 
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
