@@ -56,9 +56,6 @@
 //     loadMap()
 //   }, [])
 
-
-
-
 // }
 
 // function addSquare(
@@ -69,7 +66,6 @@
 //   pane,
 //   setMoveEnd
 // ) {
-
 
 //   api
 //     .convertToCoordinates({ words, format: "geojson" })
@@ -141,7 +137,5 @@
 //     drawSquare()
 
 //   }, [])
-
-
 
 // }
