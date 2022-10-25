@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, Circle, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+// const { MapContainer, Circle, TileLayer } = dynamic(() => import('react-leaflet'), {ssr: false}); //load it on client side only
+
 function Map() {
    const position = [51.505, -0.09]
    const fillBlueOptions = { fillColor: "#0484D6" };
