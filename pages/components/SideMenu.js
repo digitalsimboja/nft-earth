@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@mui/material";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Drawer } from "@chakra-ui/react";
