@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, Circle, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import styles from "./../../styles/Map.module.css";
+import styles from "../styles/Map.module.css";
 
 // const { MapContainer, Circle, TileLayer } = dynamic(() => import('react-leaflet'), {ssr: false}); //load it on client side only
 
