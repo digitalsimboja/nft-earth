@@ -3,6 +3,7 @@ import { MapContainer, Circle, TileLayer, useMap } from "react-leaflet";
 import what3words from "@what3words/api";
 import { What3wordsService } from "@what3words/api";
 import { LatLngTuple } from "leaflet";
+import { Box } from "@chakra-ui/react";
 import "leaflet/dist/leaflet.css";
 import { GREEN } from "../constants";
 import { drawChosenSquares, drawGrid } from "../utils/helpers"
@@ -154,21 +155,37 @@ function Map() {
    }
 
    return (
-      <MapContainer center={initialCoords}
-         zoom={20}
-         doubleClickZoom={true}
-         scrollWheelZoom={true}
-         dragging={true}
-         animate={true}
-         style={{
-            height: "900px",
-            width: "100%",
-            position: "absolute",
-            zIndex: "1",
-         }} whenCreated={setMap}>
-         <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-         <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} />
-      </MapContainer>
+      <Box position={'relative'}>
+         <MapContainer
+            center={initialCoords}
+            zoom={19}
+            doubleClickZoom={true}
+            scrollWheelZoom={true}
+            dragging={true}
+            animate={true}
+            // maxZoom={21}
+            style={{
+               height: "900px",
+               width: "100%",
+               position: "absolute",
+               zIndex: "1",
+            }}
+            whenCreated={setMap}
+         >
+            <TileLayer
+               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+               // maxNativeZoom={19}
+               // maxZoom={21}
+               // minZoom={18}
+            />
+            {/* <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} /> */}
+            <Grid
+            api={api}
+            setMoveEnd={setMoveEnd}
+            setLineOpacity={setLineOpacity} />
+         </MapContainer>
+      </Box>
    );
 }
 
