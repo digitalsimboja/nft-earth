@@ -39,7 +39,8 @@ export function drawGrid(map, api) {
         L.geoJSON(data, {
           style: function () {
             return {
-              color: "#8d8d8d",
+              // color: "#8d8d8d",
+              color: "#b7f7d2",
               stroke: true,
               weight: 0.5,
             };
@@ -48,10 +49,6 @@ export function drawGrid(map, api) {
       })
       .catch(console.error);
   }
-
-
-
-
 }
 
 function addSquare(
