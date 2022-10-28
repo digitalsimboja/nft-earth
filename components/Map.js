@@ -1,9 +1,10 @@
 import "leaflet/dist/leaflet.css";
 
-import { Circle, MapContainer, TileLayer } from "react-leaflet";
+import { Circle, MapContainer, TileLayer, useMap } from "react-leaflet";
 import React, { useEffect, useState } from "react";
 import { drawChosenSquares, drawGrid } from "../utils/helpers";
 
+import { Box } from "@chakra-ui/react";
 import { GREEN } from "../constants";
 import styles from "../styles/Map.module.css";
 import what3words from "@what3words/api";
@@ -66,7 +67,7 @@ function ChosenSquares({
 }
 
 function Map() {
-  //   const position = [51.505, -0.09];
+  // const position = [51.505, -0.09]
   const fillBlueOptions = { fillColor: "#0484D6" };
   const [map, setMap] = useState(null);
 
@@ -95,7 +96,6 @@ function Map() {
           coords: { latitude: lat, longitude: lng },
         } = position;
         console.log("Position: ", position);
-
         if (
           !initialCoords ||
           (initialCoords[0] !== lat && initialCoords[1] !== lng)
@@ -160,33 +160,39 @@ function Map() {
   }
 
   return (
-    <MapContainer
-      center={initialCoords}
-      className={styles.MapContainer}
-      zoom={20}
-      minZoom={2}
-      doubleClickZoom={true}
-      scrollWheelZoom={true}
-      dragging={true}
-      animate={true}
-      style={{
-        height: "900px",
-        width: "100%",
-        position: "absolute",
-        zIndex: "1",
-      }}
-      whenCreated={setMap}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Circle
+    <Box position={"relative"}>
+      <MapContainer
+        className={styles.MapContainer}
         center={initialCoords}
-        pathOptions={fillBlueOptions}
-        radius={50}
-      />
-    </MapContainer>
+        zoom={20}
+        doubleClickZoom={true}
+        scrollWheelZoom={true}
+        dragging={true}
+        animate={true}
+        maxZoom={21}
+        style={{
+          height: "900px",
+          width: "100%",
+          position: "absolute",
+          zIndex: "1",
+        }}
+        whenCreated={setMap}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // maxNativeZoom={19}
+          // maxZoom={21}
+          // minZoom={18}
+        />
+        {/* <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} /> */}
+        <Grid
+          api={api}
+          setMoveEnd={setMoveEnd}
+          setLineOpacity={setLineOpacity}
+        />
+      </MapContainer>
+    </Box>
   );
 }
 
