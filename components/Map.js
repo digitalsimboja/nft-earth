@@ -179,7 +179,7 @@ function Map() {
                // maxZoom={21}
                // minZoom={18}
             />
-            {/* <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} /> */}
+            <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} />
             <Grid
             api={api}
             setMoveEnd={setMoveEnd}
