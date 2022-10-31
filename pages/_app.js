@@ -6,7 +6,6 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
-
 const polygonChain = {
   id: 80001,
   name: "Mumbai Testnet",
@@ -36,7 +35,7 @@ const { chains, provider } = configureChains(
         if (chain.id !== polygonChain.id) {
           throw new Error("Error! Switch your network to Polygon Mainnnet");
           return null;
-        };
+        }
         return { http: chain.rpcUrls.default };
       },
     }),
@@ -54,19 +53,15 @@ const wagmiClient = createClient({
   provider,
 });
 
-
 function MyApp({ Component, pageProps }) {
   return (
-
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
-
       </RainbowKitProvider>
     </WagmiConfig>
-
   );
 }
 

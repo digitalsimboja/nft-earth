@@ -1,6 +1,5 @@
-import L, { LatLngBounds, Map } from "leaflet";
-import { What3wordsService } from "@what3words/api/dist/service";
 import { GREEN } from "../constants";
+import L from "leaflet";
 import { useEffect } from "react";
 
 export function drawGrid(map, api) {
@@ -51,16 +50,7 @@ export function drawGrid(map, api) {
   }
 }
 
-function addSquare(
-  api,
-  words,
-  color,
-  map,
-  pane,
-  setMoveEnd
-) {
-
-
+function addSquare(api, words, color, map, pane, setMoveEnd) {
   api
     .convertToCoordinates({ words, format: "geojson" })
     .then(function (data) {
@@ -117,21 +107,9 @@ export function drawChosenSquares(
       if (chosenPane)
         chosenSquares.map((words) => {
           const color = isClaiming ? "#fa3737" : GREEN;
-          addSquare(
-            api,
-            words,
-            color,
-            map,
-            chosenPane,
-            setMoveEnd
-          );
+          addSquare(api, words, color, map, chosenPane, setMoveEnd);
         });
-
-    }
-    drawSquare()
-
-  }, [])
-
-
-
+    };
+    drawSquare();
+  }, [api, chosenSquares, isClaiming, map, setMoveEnd]);
 }
