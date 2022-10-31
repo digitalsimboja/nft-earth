@@ -95,7 +95,7 @@ function Map() {
         const {
           coords: { latitude: lat, longitude: lng },
         } = position;
-        console.log("Position: ", position);
+
         if (
           !initialCoords ||
           (initialCoords[0] !== lat && initialCoords[1] !== lng)
@@ -125,11 +125,6 @@ function Map() {
     );
 
     return () => navigator.geolocation.clearWatch(id);
-    // if (map) {
-    //    setInterval(function () {
-    //       map.invalidateSize();
-    //    }, 100);
-    // }
   }, [initialCoords, chosenSquares, api]);
 
   useEffect(() => {
@@ -164,7 +159,7 @@ function Map() {
       <MapContainer
         className={styles.MapContainer}
         center={initialCoords}
-        zoom={20}
+        zoom={19}
         doubleClickZoom={true}
         scrollWheelZoom={true}
         dragging={true}
@@ -185,12 +180,16 @@ function Map() {
           // maxZoom={21}
           // minZoom={18}
         />
-        {/* <Circle center={initialCoords} pathOptions={fillBlueOptions} radius={50} /> */}
-        <Grid
+        <Circle
+          center={initialCoords}
+          pathOptions={fillBlueOptions}
+          radius={50}
+        />
+        {/* <Grid
           api={api}
           setMoveEnd={setMoveEnd}
           setLineOpacity={setLineOpacity}
-        />
+        /> */}
       </MapContainer>
     </Box>
   );
